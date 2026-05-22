@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بُشْرَى الضِّيَافَة - منظومة الرصد والتحكم الرقمي V7</title>
-    <link rel="icon" href="https://www.bushra.com.sa/web/image/3489-6919b391/logo-png.webp?v=2">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -17,96 +15,32 @@
     
     <style>
         :root {
-            --bushra-navy: #243f66;
-            --bushra-navy-mid: #2d4f7c;
-            --bushra-navy-light: #3c628e;
-            --bushra-gold: #bba170;
-            --bushra-gold-light: #d8c297;
-            --bushra-gold-pale: #eee6d6;
+            --bushra-navy: #11437c;   
+            --bushra-gold: #bc9c63;   
             --bushra-white: #ffffff;
-            --website-bg: #eeeeee;
-            --website-card: #eeeeee;
-            --website-card-border: #cfcfcf;
-            --ink: #283846;
-            --muted: #6f7780;
-            --success-color: #00836B;
-            --danger-color: #B44E2E;
-            --border-color: #cfcfcf;
-            --font-primary: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Arial, sans-serif;
-            --bushra-pattern-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23243F66' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
-            --bushra-pattern-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --border-color: #cbd5e1;
         }
-
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font-primary);
-            background: var(--website-bg);
-            color: var(--ink);
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
             margin: 0;
             padding: 0;
-            direction: rtl;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: .055;
-            background-image: var(--bushra-pattern-blue);
-            background-size: 260px 139px;
-            background-repeat: repeat;
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 68%, transparent 100%);
-            z-index: -1;
         }
 
         .main-navbar {
-            position: sticky;
-            top: 0;
-            z-index: 10000;
-            min-height: 104px;
-            background: #f5f5f5;
+            background-color: var(--bushra-white);
             color: var(--bushra-navy);
-            padding: 16px 34px 14px;
+            padding: 10px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 22px;
-            border-bottom: 4px solid var(--bushra-navy);
-            box-shadow: 0 18px 46px rgba(36,63,102,.08);
-            overflow: hidden;
+            border-bottom: 3px solid var(--bushra-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
-        .main-navbar::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            opacity: .065;
-            background-image: var(--bushra-pattern-white);
-            background-repeat: repeat-x;
-            background-size: 260px 139px;
-            background-position: 50% 50%;
-            mask-image: linear-gradient(to left, transparent 0%, #000 16%, #000 84%, transparent 100%);
-            z-index: 0;
-        }
-
-        .main-navbar::after {
-            content: "";
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 1px;
-            background: rgba(187,161,112,.65);
-            z-index: 0;
-        }
-
-        .bushra-brand, .navbar-controls { position: relative; z-index: 2; }
 
         .bushra-brand {
             display: flex;
@@ -143,7 +77,7 @@
             width: 55px;
             height: 55px;
             background-color: var(--bushra-navy);
-            border-radius: 999px;
+            border-radius: 8px;
             align-items: center;
             justify-content: center;
             color: var(--bushra-gold);
@@ -159,9 +93,9 @@
 
         .btn-bushra {
             padding: 10px 20px;
-            border-radius: 999px;
+            border-radius: 8px;
             font-weight: 700;
-            font-family: var(--font-primary);
+            font-family: 'Tajawal', sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
@@ -172,17 +106,17 @@
         }
 
         .btn-refresh { background-color: var(--bushra-navy); color: white; }
-        .btn-upload { background-color: var(--success-color); color: white; }
-        .btn-pdf { background-color: #a02020; color: white; }
-        .btn-save-local { background-color: var(--bushra-gold); color: white; display: none; }
+        .btn-upload { background-color: #107c41; color: white; }
+        .btn-pdf { background-color: #b91c1c; color: white; }
+        .btn-save-local { background-color: #d97706; color: white; display: none; }
         .btn-bushra:hover { transform: translateY(-1px); opacity: 0.95; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
         .container { max-width: 1400px; margin: 25px auto; padding: 0 25px; }
 
         #fileStatus { 
-            background-color: #d7d7d7; 
+            background-color: #e2e8f0; 
             padding: 12px; 
-            border-radius: 999px; 
+            border-radius: 8px; 
             text-align: center; 
             margin-bottom: 20px; 
             font-weight: bold; 
@@ -193,10 +127,10 @@
         }
 
         .welcome-card {
-            background: linear-gradient(135deg, var(--bushra-navy), var(--bushra-navy-light));
+            background: linear-gradient(135deg, #0f3564 0%, #11437c 100%);
             color: white;
             padding: 25px 30px;
-            border-radius: 999px;
+            border-radius: 14px;
             margin-bottom: 25px;
             border-bottom: 5px solid var(--bushra-gold);
             display: flex;
@@ -227,11 +161,11 @@
         }
 
         .stat-card {
-            background: rgba(238,238,238,.95);
-            border-radius: 999px;
+            background-color: var(--bushra-white);
+            border-radius: 12px;
             padding: 20px;
-            border: 1px solid var(--website-card-border);
-            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -245,7 +179,7 @@
         .stat-card h4 {
             margin: 0 0 10px 0;
             font-size: 0.9rem;
-            color: var(--muted);
+            color: #64748b;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -254,16 +188,16 @@
         .stat-card .card-value {
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--ink);
+            color: #1e293b;
             line-height: 1.6;
         }
 
         .stat-card .list-item {
             font-size: 0.85rem;
-            color: var(--ink);
+            color: #334155;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dashed #d7d7d7;
+            border-bottom: 1px dashed #f1f5f9;
             padding: 2px 0;
         }
         .stat-card .list-item:last-child { border-bottom: none; }
@@ -277,19 +211,19 @@
 
         .full-width-chart-box {
             grid-column: span 3;
-            background: rgba(238,238,238,.95);
-            border-radius: 999px;
+            background-color: var(--bushra-white);
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 35px;
-            border: 1px solid var(--website-card-border);
-            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
         }
 
         .chart-wrapper-box {
-            background: rgba(238,238,238,.95);
-            border-radius: 999px;
+            background-color: var(--bushra-white);
+            border-radius: 12px;
             padding: 20px;
-            border: 1px solid var(--website-card-border);
+            border: 1px solid #e2e8f0;
         }
 
         .chart-wrapper-box h3, .full-width-chart-box h3 {
@@ -304,18 +238,18 @@
         .canvas-container-large { position: relative; height: 350px; width: 100%; }
 
         .data-table-container {
-            background: rgba(238,238,238,.95);
-            border-radius: 999px;
+            background-color: var(--bushra-white);
+            border-radius: 12px;
             padding: 25px;
-            border: 1px solid var(--website-card-border);
+            border: 1px solid #e2e8f0;
             overflow-x: auto;
-            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         table { width: 100%; border-collapse: collapse; min-width: 1100px; }
-        th { background-color: var(--bushra-navy); color: white; font-weight: 700; padding: 12px 8px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,.14); }
-        td { padding: 10px 6px; font-size: 0.85rem; border-bottom: 1px solid #d7d7d7; text-align: center; }
-        tr:nth-child(even) { background-color: #f7f7f7; }
+        th { background-color: var(--bushra-navy); color: white; font-weight: 700; padding: 12px 8px; font-size: 0.85rem; border: 1px solid #1a5192; }
+        td { padding: 10px 6px; font-size: 0.85rem; border-bottom: 1px solid #f1f5f9; text-align: center; }
+        tr:nth-child(even) { background-color: #f8fafc; }
 
         .input-cell {
             width: 70px;
@@ -323,10 +257,10 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             text-align: center;
-            font-family: var(--font-primary);
+            font-family: 'Tajawal', sans-serif;
             font-weight: bold;
-            color: var(--ink);
-            background-color: #f7f7f7;
+            color: #1e293b;
+            background-color: #f8fafc;
             transition: all 0.2s ease;
         }
 
@@ -338,77 +272,204 @@
         }
 
         .badge-status { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; width: 110px; }
-        .badge-ok { background-color: #e8f7ef; color: #00836B; border: 1px solid #a9dec2; }
-        .badge-low { background-color: #faeaea; color: #a02020; border: 1px solid #f0b8b8; }
+        .badge-ok { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+        .badge-low { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
 
-        input[type="file"] { display: none; }
 
-        /* Bushra count.html visual identity refinements */
-        .bushra-brand { gap: 18px; min-width: 0; }
-        .bushra-brand img { max-width: 214px; max-height: 64px; object-fit: contain; display: block; }
-        .brand-text h1 { font-size: 24px; font-weight: 900; letter-spacing: -.4px; }
-        .brand-text p { font-size: 13px; color: #596778; font-family: var(--font-primary); font-weight: 700; letter-spacing: 0; }
-        .navbar-controls { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
-        .btn-bushra { border-radius: 999px; font-weight: 900; min-height: 40px; padding: 10px 14px; box-shadow: 0 8px 18px rgba(36,63,102,.10); }
-        .container { max-width: 1440px; }
-        #fileStatus, .stat-card, .chart-wrapper-box, .full-width-chart-box, .data-table-container {
+
+        /* Bushra official report export identity */
+        :root {
+            --report-navy: #243f66;
+            --report-navy-mid: #2d4f7c;
+            --report-navy-light: #3c628e;
+            --report-gold: #bba170;
+            --report-gold-light: #d8c297;
+            --report-bg: #eeeeee;
+            --report-card: #f7f7f7;
+            --report-border: #cfcfcf;
+            --report-ink: #283846;
+            --report-muted: #6f7780;
+            --report-success: #00836B;
+            --report-danger: #B44E2E;
+            --report-font: 'Cairo', 'Tajawal', Tahoma, Arial, sans-serif;
+            --bushra-pattern-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23243F66' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
+            --bushra-pattern-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        #pdfReportStage {
+            position: fixed;
+            left: -14000px;
+            top: 0;
+            width: 1200px;
+            background: var(--report-bg);
+            color: var(--report-ink);
+            direction: rtl;
+            font-family: var(--report-font);
+            z-index: -1;
+        }
+
+        .pdf-report-view {
             position: relative;
-            background: rgba(238,238,238,.95);
-            border: 1px solid var(--website-card-border);
-            border-radius: 8px;
-            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            width: 1200px;
+            min-height: auto;
+            padding: 34px 42px 14px;
+            background: var(--report-bg);
             overflow: hidden;
         }
-        .stat-card::before, .chart-wrapper-box::before, .full-width-chart-box::before, .data-table-container::before {
+
+        .pdf-report-page::before {
             content: "";
-            display: block;
             position: absolute;
-            inset: 0 0 auto 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--bushra-navy), var(--bushra-gold));
-            opacity: .92;
-        }
-        .stat-card > *, .chart-wrapper-box > *, .full-width-chart-box > *, .data-table-container > * { position: relative; z-index: 1; }
-        .welcome-card { border-radius: 12px; border-bottom: 4px solid var(--bushra-gold); box-shadow: 0 18px 46px rgba(36,63,102,.12); }
-        .live-datetime-box { border-radius: 10px; }
-        th { background: var(--bushra-navy); font-weight: 900; }
-        td { font-weight: 700; }
-        .view-cell {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 70px;
-            min-height: 34px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: #f7f7f7;
-            border: 1px solid #d7d7d7;
-            color: var(--bushra-navy);
-            font-weight: 900;
-        }
-        .badge-status { border-radius: 999px; }
-        @media(max-width: 900px) {
-            .main-navbar { align-items: flex-start; flex-direction: column; min-height: auto; padding: 12px 16px; gap: 10px; }
-            .navbar-controls { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-            .btn-bushra { font-size: 11px; min-height: 36px; padding: 8px 11px; white-space: nowrap; }
-            .bushra-brand img { max-width: 160px; max-height: 48px; }
-            .brand-text h1 { font-size: 19px; white-space: normal; }
-            .brand-text p { font-size: 12px; }
-            .stats-cards-container, .visual-charts-grid { grid-template-columns: 1fr; }
-            .full-width-chart-box { grid-column: span 1; }
-            .welcome-card { flex-direction: column; align-items: flex-start; gap: 14px; }
+            inset: 0;
+            opacity: .055;
+            background-image: var(--bushra-pattern-blue);
+            background-repeat: repeat;
+            background-size: 260px 139px;
+            pointer-events: none;
         }
 
+        .pdf-report-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+        .pdf-report-topbar {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            min-height: 112px;
+            padding: 18px 22px;
+            background: #f5f5f5;
+            border: 1px solid var(--report-border);
+            border-bottom: 5px solid var(--report-navy);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .pdf-report-topbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .08;
+            background-image: var(--bushra-pattern-white);
+            background-repeat: repeat-x;
+            background-size: 260px 139px;
+        }
+
+        .pdf-brand, .pdf-report-meta, .pdf-report-title-block { position: relative; z-index: 1; }
+        .pdf-brand { display: flex; align-items: center; gap: 18px; min-width: 0; }
+        .pdf-brand img { width: 214px; height: 64px; object-fit: contain; display: block; }
+        .pdf-report-title-main { color: var(--report-navy); font-size: 28px; font-weight: 900; line-height: 1.25; letter-spacing: -.5px; }
+        .pdf-report-title-sub { color: #596778; font-size: 14px; font-weight: 800; margin-top: 6px; }
+        .pdf-report-meta { text-align: left; color: var(--report-navy); font-weight: 900; font-size: 14px; line-height: 1.8; }
+        .pdf-report-meta .season { color: var(--report-gold); }
+
+        .pdf-hero {
+            margin-top: 14px;
+            padding: 18px 22px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--report-navy), var(--report-navy-light));
+            color: #fff;
+            border-bottom: 5px solid var(--report-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pdf-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .10;
+            background-image: var(--bushra-pattern-white);
+            background-size: 220px 117px;
+        }
+
+        .pdf-hero > * { position: relative; z-index: 1; }
+        .pdf-hero h1 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.25; }
+        .pdf-hero p { margin: 7px 0 0; font-size: 13px; font-weight: 700; opacity: .92; }
+        .pdf-date-box { min-width: 270px; text-align: left; background: rgba(255,255,255,.10); border: 1px solid rgba(216,194,151,.45); border-radius: 12px; padding: 12px 16px; font-size: 13px; font-weight: 800; line-height: 1.8; }
+
+        .pdf-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+        .pdf-kpi-card { background: rgba(247,247,247,.96); border: 1px solid var(--report-border); border-radius: 12px; padding: 13px; min-height: 112px; box-shadow: 0 12px 30px rgba(36,63,102,.08); position: relative; overflow: hidden; }
+        .pdf-kpi-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: linear-gradient(90deg,var(--report-navy),var(--report-gold)); }
+        .pdf-kpi-title { color: var(--report-navy); font-size: 14px; font-weight: 900; margin-bottom: 10px; }
+        .pdf-kpi-value { font-size: 24px; font-weight: 900; color: var(--report-ink); line-height: 1.25; }
+        .pdf-kpi-note { color: var(--report-muted); font-size: 12px; font-weight: 800; margin-top: 5px; }
+        .pdf-kpi-list .list-item { display: flex; justify-content: space-between; border-bottom: 1px dashed #d8d8d8; padding: 4px 0; font-size: 12px; font-weight: 800; }
+
+        .pdf-section { margin-top: 14px; background: rgba(247,247,247,.96); border: 1px solid var(--report-border); border-radius: 12px; padding: 18px; box-shadow: 0 12px 30px rgba(36,63,102,.06); page-break-inside: avoid; }
+        .pdf-section-title { color: var(--report-navy); font-size: 16px; font-weight: 900; margin: 0 0 14px; padding-right: 12px; border-right: 5px solid var(--report-gold); }
+        .pdf-chart-wide img, .pdf-chart-grid img { width: 100%; display: block; background: #fff; border-radius: 10px; border: 1px solid #dedede; }
+        .pdf-chart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .pdf-small-chart-title { color: var(--report-navy); font-size: 14px; font-weight: 900; margin: 0 0 8px; }
+
+        .pdf-table { width: 100%; min-width: 0; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: visible; font-size: 10.5px; table-layout: fixed; }
+        .pdf-table th { background: var(--report-navy); color: #fff; border: 1px solid #395a87; padding: 7px 5px; font-weight: 900; line-height: 1.25; }
+        .pdf-table td { border: 1px solid #e5e5e5; padding: 6px 5px; text-align: center; font-weight: 800; color: var(--report-ink); line-height: 1.25; }
+        .pdf-table tr:nth-child(even) td { background: #f7f7f7; }
+        .pdf-table .center-name { text-align: right; color: var(--report-navy); font-weight: 900; }
+
+        /* PDF export table header fix: first two headers span both header rows cleanly */
+        .pdf-table thead th { vertical-align: middle !important; }
+        .pdf-table thead tr:first-child th { height: 30px; }
+        .pdf-table thead tr:nth-child(2) th { height: 28px; }
+        .pdf-table th.pdf-rowspan-head {
+            height: 58px !important;
+            vertical-align: middle !important;
+            text-align: center !important;
+            background: var(--report-navy) !important;
+            color: #fff !important;
+            position: relative !important;
+            z-index: 4 !important;
+            box-shadow: inset 0 0 0 9999px var(--report-navy) !important;
+        }
+        .pdf-table thead tr:nth-child(2) th { position: relative; z-index: 2; }
+        .pdf-status { display: inline-block; min-width: 86px; padding: 3px 8px; border-radius: 999px; font-size: 10px; font-weight: 900; }
+        .pdf-status.ok { background: #e8f7ef; color: var(--report-success); border: 1px solid #a9dec2; }
+        .pdf-status.low { background: #faeaea; color: #a02020; border: 1px solid #f0b8b8; }
+        .pdf-finished-value { display: inline-block; min-width: 42px; padding: 3px 8px; border-radius: 8px; background: #eee6d6; color: var(--report-navy); font-weight: 900; }
+
+        .pdf-footer { margin-top: auto; background: var(--report-navy); color: #fff; border-radius: 12px; padding: 16px 20px; display: flex; justify-content: center; gap: 34px; align-items: center; font-size: 13px; font-weight: 800; position: relative; overflow: hidden; }
+        .pdf-footer::before { content: ""; position: absolute; inset: 0; opacity: .13; background-image: var(--bushra-pattern-white); background-size: 180px 96px; }
+        .pdf-footer span { position: relative; z-index: 1; }
+
+
+
+        /* Logo-only header and compact page/report spacing */
+        .logo-only-brand { gap: 0; }
+        .identity-main-logo { width: 214px; height: 64px; object-fit: contain; display: block; }
+        .main-navbar { min-height: 88px; }
+        .container { margin-bottom: 0; padding-bottom: 0; }
+        #capture-area { padding-bottom: 0; }
+        .data-table-container { margin-bottom: 0; }
+        .pdf-report-topbar.logo-only { justify-content: center; min-height: 82px; padding: 10px 18px; }
+        .pdf-report-topbar.logo-only .pdf-brand { justify-content: center; width: 100%; }
+        .pdf-report-topbar.logo-only .pdf-brand img { width: 204px; height: 60px; }
+        .pdf-report-view.compact-report { min-height: auto; padding-bottom: 0; }
+        .pdf-report-view.compact-report .pdf-footer { margin-top: auto; }
+
+        
+        .pdf-chart-wide img { max-height: 500px; object-fit: contain; }
+        .pdf-chart-grid img { height: 255px; object-fit: contain; }
+        .pdf-table-section { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+        .pdf-table-wrap { flex: 1 1 auto; overflow: hidden; border-radius: 10px; border: 1px solid #dedede; background: #fff; }
+        .pdf-table col.col-center { width: 18%; }
+        .pdf-table col.col-pilgrims { width: 9%; }
+        .pdf-table col.col-num { width: 7%; }
+        .pdf-table col.col-status { width: 10%; }
+        .pdf-page-number { position: absolute; left: 38px; bottom: 16px; color: #7b8490; font-size: 11px; font-weight: 800; z-index: 2; }
+
+        input[type="file"] { display: none; }
     </style>
 </head>
 <body>
 
     <div class="main-navbar">
-        <div class="bushra-brand">
-            <img src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" style="height: 64px; width: auto; object-fit: contain;">
-            <div class="brand-text">
-                
-            </div>
+        <div class="bushra-brand logo-only-brand">
+            <img src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" class="identity-main-logo" crossorigin="anonymous">
         </div>
         
         <div class="navbar-controls">
@@ -431,17 +492,8 @@
     <div id="capture-area" class="container">
         
         <div id="pdfHeader" class="pdf-report-header">
-            <div class="bushra-brand">
-                <div id="pdfLogoIcon" class="pdf-logo-placeholder"><i class="fa-solid fa-hotel"></i></div>
-                <img id="pdfLogoImg" src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" style="height: 64px; width: auto; object-fit: contain;">
-                <div class="brand-text">
-                    <h1 style="font-size: 1.6rem; color: var(--bushra-navy); margin:0;">بشرى الضيافة</h1>
-                    <p style="font-size: 0.8rem; color: var(--bushra-navy); margin:2px 0 0 0; font-family:'Arial'; font-weight:bold;">BUSHRA HOSPITALITY</p>
-                </div>
-            </div>
-            <div style="text-align: left; color: var(--bushra-navy); font-weight: bold; font-size: 1.1rem;">
-                <div>التقرير الرسمي لمراكز الإركاب</div>
-                <div style="font-size: 0.9rem; color: var(--bushra-gold); margin-top: 4px;">موسم ١٤٤٧ هـ</div>
+            <div class="bushra-brand logo-only-brand">
+                <img id="pdfLogoImg" src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" class="identity-main-logo" crossorigin="anonymous">
             </div>
         </div>
         
@@ -471,12 +523,12 @@
             <div class="stat-card highest-pct">
                 <h4><i class="fa-solid fa-chart-line" style="color: var(--bushra-navy);"></i> أعلى نسبة إنجاز كلية</h4>
                 <div id="highestPctValue" class="card-value" style="color: var(--success-color); font-size: 1.5rem;">0%</div>
-                <div id="highestPctCenter" style="font-size: 0.8rem; color: var(--muted);">-</div>
+                <div id="highestPctCenter" style="font-size: 0.8rem; color: #64748b;">-</div>
             </div>
             <div class="stat-card lowest-pct">
-                <h4><i class="fa-solid fa-triangle-exclamation" style="color: var(--bushra-gold);"></i> أقل نسبة إنجاز كلية</h4>
+                <h4><i class="fa-solid fa-triangle-exclamation" style="color: #d97706;"></i> أقل نسبة إنجاز كلية</h4>
                 <div id="lowestPctValue" class="card-value" style="color: var(--danger-color); font-size: 1.5rem;">0%</div>
-                <div id="lowestPctCenter" style="font-size: 0.8rem; color: var(--muted);">-</div>
+                <div id="lowestPctCenter" style="font-size: 0.8rem; color: #64748b;">-</div>
             </div>
         </div>
 
@@ -631,17 +683,17 @@
                         document.getElementById('btnSaveLocal').style.display = 'none';
                         renderDashboard(true);
                         document.getElementById('fileStatus').innerHTML = `🟢 تم التحديث والمزامنة بنجاح من قوقل شيت المباشر! تم رصد (${globalCentersDataset.length}) مركز تشغيلي ميداني حالياً.`;
-                        document.getElementById('fileStatus').style.backgroundColor = "#e8f7ef";
-                        document.getElementById('fileStatus').style.color = "#00836B";
+                        document.getElementById('fileStatus').style.backgroundColor = "#d1fae5";
+                        document.getElementById('fileStatus').style.color = "#065f46";
                         return;
                     }
                 }
                 throw new Error("تنسيق ملف البيانات غير متوافق.");
             } catch (error) {
                 console.warn("Google sheet fetch failed, using fallback:", error);
-                document.getElementById('fileStatus').innerHTML = `💡 وضع العمل الاحتياطي نشط. قيم المنجز تظهر للعرض فقط، ويمكن تحديثها عبر قوقل شيت أو رفع ملف Excel.`;
-                document.getElementById('fileStatus').style.backgroundColor = "#faeaea";
-                document.getElementById('fileStatus').style.color = "#a02020";
+                document.getElementById('fileStatus').innerHTML = `💡 وضع العمل الاحتياطي نشط. يمكنك تعديل القيم يدوياً بالجدول وحفظها داخل جهازك الحالي مباشرة!`;
+                document.getElementById('fileStatus').style.backgroundColor = "#fee2e2";
+                document.getElementById('fileStatus').style.color = "#991b1b";
                 renderDashboard(true);
             }
         }
@@ -652,8 +704,8 @@
             hasUnsavedChanges = false;
             document.getElementById('btnSaveLocal').style.display = 'none';
             document.getElementById('fileStatus').innerHTML = `✅ تم حفظ تعديلات البيانات بنجاح في ذاكرة المتصفح المحلية! ستبقى محفوظة حتى لو أغلقتِ الصفحة.`;
-            document.getElementById('fileStatus').style.backgroundColor = "#e8f7ef";
-            document.getElementById('fileStatus').style.color = "#00836B";
+            document.getElementById('fileStatus').style.backgroundColor = "#d1fae5";
+            document.getElementById('fileStatus').style.color = "#065f46";
         }
 
         document.getElementById('excelUploadInput').addEventListener('change', function(e) {
@@ -763,15 +815,15 @@
                             <td style="font-weight: 500;">${c.totalPilgrims.toLocaleString()}</td>
                             
                             <td>${target}</td>
-                            <td><span class="view-cell" aria-label="المنجز للسكن">${c.housingFinished.toLocaleString()}</span></td>
+                            <td><input type="number" class="input-cell" value="${c.housingFinished}" oninput="updateValue(${idx}, 'housingFinished', this.value)"></td>
                             <td id="status-housing-${idx}">${calcPct(c.housingFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.housingFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
                             
                             <td>${target}</td>
-                            <td><span class="view-cell" aria-label="المنجز للمرشدين">${c.guidesFinished.toLocaleString()}</span></td>
+                            <td><input type="number" class="input-cell" value="${c.guidesFinished}" oninput="updateValue(${idx}, 'guidesFinished', this.value)"></td>
                             <td id="status-guides-${idx}">${calcPct(c.guidesFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.guidesFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
                             
                             <td>${target}</td>
-                            <td><span class="view-cell" aria-label="المنجز للإركاب">${c.erkabFinished.toLocaleString()}</span></td>
+                            <td><input type="number" class="input-cell" value="${c.erkabFinished}" oninput="updateValue(${idx}, 'erkabFinished', this.value)"></td>
                             <td id="status-erkab-${idx}">${calcPct(c.erkabFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.erkabFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
                         </tr>
                     `;
@@ -809,66 +861,231 @@
                 { label: 'منجز السكن الفعلي', data: housingDones, backgroundColor: '#bc9c63' }
             ], true);
 
-            createChart('housingUIGraph', 'doughnut', ['منجز', 'متبقي'], [{ data: [sumHD, Math.max(0, sumH-sumHD)], backgroundColor: ['#11437c', '#d7d7d7'] }]);
+            createChart('housingUIGraph', 'doughnut', ['منجز', 'متبقي'], [{ data: [sumHD, Math.max(0, sumH-sumHD)], backgroundColor: ['#11437c', '#e2e8f0'] }]);
             createChart('guidesUIGraph', 'line', ['المستهدف', 'المعينين'], [{ data: [sumG, sumGD], fill: true, borderColor: '#bc9c63', backgroundColor: 'rgba(188, 156, 99, 0.15)' }]);
             createChart('erkabUIGraph', 'bar', ['المستهدف الكلي', 'المنجز الفعلي'], [{ data: [sumE, sumED], backgroundColor: ['#10b981', '#bc9c63'] }]);
         }
 
+        function getCurrentArabicDateTimeText() {
+            const now = new Date();
+            const gregDate = now.toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const hijriDate = now.toLocaleDateString('ar-TN-u-ca-islamic-umalqura', { year: 'numeric', month: 'long', day: 'numeric' });
+            const timeText = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit', hour12: true });
+            return { gregDate, hijriDate, timeText };
+        }
+
+        function chartCanvasToImage(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return '';
+            try { return canvas.toDataURL('image/png', 1.0); }
+            catch (error) { console.warn('تعذر تحويل الرسم البياني إلى صورة:', canvasId, error); return ''; }
+        }
+
+        function buildPdfStatus(done, target) {
+            const pct = target > 0 ? Math.min(Math.round((done / target) * 100), 100) : 0;
+            const isDone = pct >= 100;
+            return `<span class="pdf-status ${isDone ? 'ok' : 'low'}">${isDone ? 'مكتمل' : 'متأخر'} (${pct}%)</span>`;
+        }
+
+        function buildPdfReportView() {
+            const { gregDate, hijriDate, timeText } = getCurrentArabicDateTimeText();
+            const logoUrl = 'https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da';
+            const markUrl = 'https://www.bushra.com.sa/web/image/3489-6919b391/logo-png.webp';
+
+            const centers = globalCentersDataset.map(c => {
+                const target = Math.ceil((parseInt(c.totalPilgrims) || 0) / 45);
+                const housing = parseInt(c.housingFinished) || 0;
+                const guides = parseInt(c.guidesFinished) || 0;
+                const erkab = parseInt(c.erkabFinished) || 0;
+                const avg = target > 0 ? Math.min(Math.round((((housing / target) + (guides / target) + (erkab / target)) / 3) * 100), 100) : 0;
+                return { ...c, target, housing, guides, erkab, avg };
+            });
+
+            const totalPilgrims = centers.reduce((sum, c) => sum + (parseInt(c.totalPilgrims) || 0), 0);
+            const totalTarget = centers.reduce((sum, c) => sum + c.target, 0);
+            const totalHousing = centers.reduce((sum, c) => sum + c.housing, 0);
+            const totalGuides = centers.reduce((sum, c) => sum + c.guides, 0);
+            const totalErkab = centers.reduce((sum, c) => sum + c.erkab, 0);
+            const overallPct = totalTarget > 0 ? Math.min(Math.round((((totalHousing / totalTarget) + (totalGuides / totalTarget) + (totalErkab / totalTarget)) / 3) * 100), 100) : 0;
+            const sortedTop = [...centers].sort((a, b) => b.avg - a.avg);
+            const sortedLow = [...centers].sort((a, b) => a.avg - b.avg);
+
+            const listHtml = (items, color) => items.slice(0, 3).map((c, idx) => `
+                <div class="list-item"><span>${idx + 1}. ${c.name}</span><strong style="color:${color};">${c.avg}%</strong></div>
+            `).join('') || '<div class="pdf-kpi-note">لا توجد بيانات</div>';
+
+            const tableRows = centers.map(c => `
+                <tr>
+                    <td class="center-name">${c.name}</td>
+                    <td>${(parseInt(c.totalPilgrims) || 0).toLocaleString('ar-SA')}</td>
+                    <td>${c.target.toLocaleString('ar-SA')}</td>
+                    <td><span class="pdf-finished-value">${c.housing.toLocaleString('ar-SA')}</span></td>
+                    <td>${buildPdfStatus(c.housing, c.target)}</td>
+                    <td>${c.target.toLocaleString('ar-SA')}</td>
+                    <td><span class="pdf-finished-value">${c.guides.toLocaleString('ar-SA')}</span></td>
+                    <td>${buildPdfStatus(c.guides, c.target)}</td>
+                    <td>${c.target.toLocaleString('ar-SA')}</td>
+                    <td><span class="pdf-finished-value">${c.erkab.toLocaleString('ar-SA')}</span></td>
+                    <td>${buildPdfStatus(c.erkab, c.target)}</td>
+                </tr>
+            `).join('');
+
+            const horizontalChart = chartCanvasToImage('horizontalCentersGraph');
+            const housingChart = chartCanvasToImage('housingUIGraph');
+            const guidesChart = chartCanvasToImage('guidesUIGraph');
+            const erkabChart = chartCanvasToImage('erkabUIGraph');
+
+            const report = document.createElement('div');
+            report.id = 'pdfReportStage';
+            report.innerHTML = `
+                <section class="pdf-report-view compact-report" aria-label="تقرير بشرى الرسمي">
+                    <article class="pdf-report-page pdf-page-summary" aria-label="صفحة ملخص التقرير">
+                        <div class="pdf-report-content">
+                            <header class="pdf-report-topbar logo-only">
+                                <div class="pdf-brand">
+                                    <img src="${logoUrl}" alt="Bushra Hospitality Logo" crossorigin="anonymous">
+                                </div>
+                            </header>
+
+                            <section class="pdf-hero">
+                                <div>
+                                    <h1>تقرير الرصد والجاهزية لمراكز الإركاب</h1>
+                                    <p>ملخص تنفيذي لقياس المستهدف والمنجز الفعلي على مستوى جاهزية السكن، المرشدين، وبيانات الإركاب.</p>
+                                </div>
+                                <div class="pdf-date-box">
+                                    <div>التاريخ الميلادي: ${gregDate}</div>
+                                    <div>التاريخ الهجري: ${hijriDate}</div>
+                                    <div>وقت إنشاء التقرير: ${timeText}</div>
+                                </div>
+                            </section>
+
+                            <section class="pdf-kpi-grid">
+                                <div class="pdf-kpi-card">
+                                    <div class="pdf-kpi-title">إجمالي الحجاج</div>
+                                    <div class="pdf-kpi-value">${totalPilgrims.toLocaleString('ar-SA')}</div>
+                                    <div class="pdf-kpi-note">عدد المراكز: ${centers.length.toLocaleString('ar-SA')}</div>
+                                </div>
+                                <div class="pdf-kpi-card">
+                                    <div class="pdf-kpi-title">نسبة الإنجاز الكلية</div>
+                                    <div class="pdf-kpi-value" style="color:var(--report-success);">${overallPct}%</div>
+                                    <div class="pdf-kpi-note">متوسط السكن والمرشدين والإركاب</div>
+                                </div>
+                                <div class="pdf-kpi-card pdf-kpi-list">
+                                    <div class="pdf-kpi-title">أعلى 3 مراكز إنجازاً</div>
+                                    ${listHtml(sortedTop, 'var(--report-success)')}
+                                </div>
+                                <div class="pdf-kpi-card pdf-kpi-list">
+                                    <div class="pdf-kpi-title">أقل 3 مراكز إنجازاً</div>
+                                    ${listHtml(sortedLow, '#a02020')}
+                                </div>
+                            </section>
+
+                            <section class="pdf-section pdf-chart-wide">
+                                <h2 class="pdf-section-title">الرصد المقارن لمراكز الإركاب</h2>
+                                ${horizontalChart ? `<img src="${horizontalChart}" alt="الرصد المقارن لمراكز الإركاب">` : '<div class="pdf-kpi-note">لا يمكن إظهار الرسم البياني حالياً.</div>'}
+                            </section>
+
+                            <section class="pdf-section">
+                                <h2 class="pdf-section-title">المؤشرات التشغيلية</h2>
+                                <div class="pdf-chart-grid">
+                                    <div><div class="pdf-small-chart-title">إجمالي جاهزية السكن</div>${housingChart ? `<img src="${housingChart}" alt="إجمالي جاهزية السكن">` : ''}</div>
+                                    <div><div class="pdf-small-chart-title">تسكين وتعيين المرشدين</div>${guidesChart ? `<img src="${guidesChart}" alt="تسكين وتعيين المرشدين">` : ''}</div>
+                                    <div><div class="pdf-small-chart-title">موقف بيانات الإركاب</div>${erkabChart ? `<img src="${erkabChart}" alt="موقف بيانات الإركاب">` : ''}</div>
+                                </div>
+                            </section>
+                            <div class="pdf-page-number">صفحة ١ من ٢</div>
+                        </div>
+                    </article>
+
+                    <article class="pdf-report-page pdf-page-table" aria-label="صفحة جدول التفاصيل">
+                        <div class="pdf-report-content">
+                            <header class="pdf-report-topbar logo-only">
+                                <div class="pdf-brand">
+                                    <img src="${logoUrl}" alt="Bushra Hospitality Logo" crossorigin="anonymous">
+                                </div>
+                            </header>
+
+                            <section class="pdf-section pdf-table-section">
+                                <div class="pdf-table-wrap">
+                                    <table class="pdf-table">
+                                        <colgroup>
+                                            <col class="col-center"><col class="col-pilgrims">
+                                            <col class="col-num"><col class="col-num"><col class="col-status">
+                                            <col class="col-num"><col class="col-num"><col class="col-status">
+                                            <col class="col-num"><col class="col-num"><col class="col-status">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" class="pdf-rowspan-head">المركز التشغيلي</th>
+                                                <th rowspan="2" class="pdf-rowspan-head">عدد الحجاج</th>
+                                                <th colspan="3">جاهزية السكن</th>
+                                                <th colspan="3">المرشدين المعينين</th>
+                                                <th colspan="3">بيانات الإركاب</th>
+                                            </tr>
+                                            <tr>
+                                                <th>مستهدف</th><th>المنجز</th><th>الحالة</th>
+                                                <th>مستهدف</th><th>المنجز</th><th>الحالة</th>
+                                                <th>مطلوب</th><th>المنجز</th><th>الحالة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>${tableRows}</tbody>
+                                    </table>
+                                </div>
+                            </section>
+
+                            <footer class="pdf-footer">
+                                <span>تواصل معنا</span>
+                                <span>info@bushra.com.sa</span>
+                                <span>الرقم الموحد : 920031667</span>
+                                <span><img src="${markUrl}" alt="Bushra icon" crossorigin="anonymous" style="width:38px;height:39px;object-fit:contain;vertical-align:middle;"></span>
+                            </footer>
+                            <div class="pdf-page-number">صفحة ٢ من ٢</div>
+                        </div>
+                    </article>
+                </section>`;
+            return report;
+        }
+
         async function exportToPDF() {
             const { jsPDF } = window.jspdf;
-            const captureArea = document.getElementById('capture-area');
-            const pdfHeader = document.getElementById('pdfHeader');
-            const pdfLogoImg = document.getElementById('pdfLogoImg');
-            const pdfLogoIcon = document.getElementById('pdfLogoIcon');
-            
-            pdfLogoImg.style.display = 'none';
-            pdfLogoIcon.style.display = 'flex';
-            pdfHeader.style.display = 'flex';
-            document.querySelector('.main-navbar').style.display = 'none';
+            const existingReport = document.getElementById('pdfReportStage');
+            if (existingReport) existingReport.remove();
 
-            setTimeout(() => {
-                html2canvas(captureArea, { 
-                    scale: 2.5, 
-                    useCORS: true, 
-                    logging: false,
-                    allowTaint: true,
-                    windowWidth: 1400
-                }).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jsPDF('p', 'mm', 'a4');
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = pdf.internal.pageSize.getHeight();
-                    
-                    const imgWidth = pdfWidth;
-                    const imgHeight = (canvas.height * pdfWidth) / canvas.width;
-                    
-                    let heightLeft = imgHeight;
-                    let position = 0;
+            const report = buildPdfReportView();
+            document.body.appendChild(report);
 
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pdfHeight;
+            try {
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                await new Promise(resolve => setTimeout(resolve, 250));
 
-                    while (heightLeft >= 0) {
-                        position = heightLeft - imgHeight;
-                        pdf.addPage();
-                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                        heightLeft -= pdfHeight;
-                    }
-                    
-                    pdf.save(`تقرير_بشرى_الضيافة_الرسمي_${new Date().toISOString().slice(0,10)}.pdf`);
-                    
-                    pdfLogoImg.style.display = 'block';
-                    pdfLogoIcon.style.display = 'none';
-                    pdfHeader.style.display = 'none';
-                    document.querySelector('.main-navbar').style.display = 'flex';
-                }).catch(err => {
-                    console.error("خطأ التصدير:", err);
-                    pdfLogoImg.style.display = 'block';
-                    pdfLogoIcon.style.display = 'none';
-                    pdfHeader.style.display = 'none';
-                    document.querySelector('.main-navbar').style.display = 'flex';
-                });
-            }, 600);
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const pages = Array.from(report.querySelectorAll('.pdf-report-page'));
+
+                for (let i = 0; i < pages.length; i++) {
+                    const pageCanvas = await html2canvas(pages[i], {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: false,
+                        backgroundColor: '#eeeeee',
+                        logging: false,
+                        windowWidth: 1200,
+                        width: 1200,
+                        height: 1697
+                    });
+                    const imgData = pageCanvas.toDataURL('image/png');
+                    if (i > 0) pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
+                }
+
+                pdf.save(`تقرير_بشرى_مراكز_الإركاب_${new Date().toISOString().slice(0,10)}.pdf`);
+            } catch (err) {
+                console.error('خطأ التصدير:', err);
+                alert('تعذر إنشاء تقرير PDF. الرجاء المحاولة مرة أخرى بعد اكتمال تحميل الرسوم والبيانات.');
+            } finally {
+                report.remove();
+            }
         }
 
         window.onload = function() {
