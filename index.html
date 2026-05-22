@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بُشْرَى الضِّيَافَة - منظومة الرصد والتحكم الرقمي V7</title>
+    <link rel="icon" href="https://www.bushra.com.sa/web/image/3489-6919b391/logo-png.webp?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        :root {
+            --bushra-navy: #243f66;
+            --bushra-navy-mid: #2d4f7c;
+            --bushra-navy-light: #3c628e;
+            --bushra-gold: #bba170;
+            --bushra-gold-light: #d8c297;
+            --bushra-gold-pale: #eee6d6;
+            --bushra-white: #ffffff;
+            --website-bg: #eeeeee;
+            --website-card: #eeeeee;
+            --website-card-border: #cfcfcf;
+            --ink: #283846;
+            --muted: #6f7780;
+            --success-color: #00836B;
+            --danger-color: #B44E2E;
+            --border-color: #cfcfcf;
+            --font-primary: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Arial, sans-serif;
+            --bushra-pattern-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23243F66' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
+            --bushra-pattern-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='96' viewBox='0 0 180 96'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1.15' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M28 10 56 38 28 66 0 38Z'/%3E%3Cpath d='M56 10 84 38 56 66 28 38Z'/%3E%3Cpath d='M42 24 56 38 42 52 28 38Z'/%3E%3Cpath d='M118 10 146 38 118 66 90 38Z'/%3E%3Cpath d='M146 10 174 38 146 66 118 38Z'/%3E%3Cpath d='M132 24 146 38 132 52 118 38Z'/%3E%3Cpath d='M73 58 101 86 73 114 45 86Z'/%3E%3Cpath d='M101 58 129 86 101 114 73 86Z'/%3E%3Cpath d='M87 72 101 86 87 100 73 86Z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--website-bg);
+            color: var(--ink);
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .055;
+            background-image: var(--bushra-pattern-blue);
+            background-size: 260px 139px;
+            background-repeat: repeat;
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 68%, transparent 100%);
+            z-index: -1;
+        }
+
+        .main-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            min-height: 104px;
+            background: #f5f5f5;
+            color: var(--bushra-navy);
+            padding: 16px 34px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 22px;
+            border-bottom: 4px solid var(--bushra-navy);
+            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            overflow: hidden;
+        }
+
+        .main-navbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .065;
+            background-image: var(--bushra-pattern-white);
+            background-repeat: repeat-x;
+            background-size: 260px 139px;
+            background-position: 50% 50%;
+            mask-image: linear-gradient(to left, transparent 0%, #000 16%, #000 84%, transparent 100%);
+            z-index: 0;
+        }
+
+        .main-navbar::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 1px;
+            background: rgba(187,161,112,.65);
+            z-index: 0;
+        }
+
+        .bushra-brand, .navbar-controls { position: relative; z-index: 2; }
+
+        .bushra-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-text h1 { 
+            font-size: 1.5rem; 
+            margin: 0; 
+            font-weight: 700; 
+            color: var(--bushra-navy);
+        }
+        .brand-text p { 
+            font-size: 0.75rem; 
+            margin: 1px 0 0; 
+            color: var(--bushra-navy); 
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .pdf-report-header {
+            display: none; 
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--bushra-gold);
+        }
+
+        .pdf-logo-placeholder {
+            display: none;
+            width: 55px;
+            height: 55px;
+            background-color: var(--bushra-navy);
+            border-radius: 999px;
+            align-items: center;
+            justify-content: center;
+            color: var(--bushra-gold);
+            font-size: 1.8rem;
+            border: 2px solid var(--bushra-gold);
+        }
+
+        .navbar-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-bushra {
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-family: var(--font-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-refresh { background-color: var(--bushra-navy); color: white; }
+        .btn-upload { background-color: var(--success-color); color: white; }
+        .btn-pdf { background-color: #a02020; color: white; }
+        .btn-save-local { background-color: var(--bushra-gold); color: white; display: none; }
+        .btn-bushra:hover { transform: translateY(-1px); opacity: 0.95; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        .container { max-width: 1400px; margin: 25px auto; padding: 0 25px; }
+
+        #fileStatus { 
+            background-color: #d7d7d7; 
+            padding: 12px; 
+            border-radius: 999px; 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            color: var(--bushra-navy);
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            white-space: pre-line;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--bushra-navy), var(--bushra-navy-light));
+            color: white;
+            padding: 25px 30px;
+            border-radius: 999px;
+            margin-bottom: 25px;
+            border-bottom: 5px solid var(--bushra-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .live-datetime-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(188, 156, 99, 0.4);
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            min-width: 250px;
+        }
+        .live-datetime-box i {
+            color: var(--bushra-gold);
+            margin-left: 6px;
+        }
+
+        .stats-cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: rgba(238,238,238,.95);
+            border-radius: 999px;
+            padding: 20px;
+            border: 1px solid var(--website-card-border);
+            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stat-card.top-performers { border-top: 4px solid var(--success-color); }
+        .stat-card.low-performers { border-top: 4px solid var(--danger-color); }
+        .stat-card.highest-pct { border-top: 4px solid var(--bushra-navy); }
+        .stat-card.lowest-pct { border-top: 4px solid var(--bushra-gold); }
+
+        .stat-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-card .card-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        .stat-card .list-item {
+            font-size: 0.85rem;
+            color: var(--ink);
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #d7d7d7;
+            padding: 2px 0;
+        }
+        .stat-card .list-item:last-child { border-bottom: none; }
+
+        .visual-charts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .full-width-chart-box {
+            grid-column: span 3;
+            background: rgba(238,238,238,.95);
+            border-radius: 999px;
+            padding: 20px;
+            margin-bottom: 35px;
+            border: 1px solid var(--website-card-border);
+            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+        }
+
+        .chart-wrapper-box {
+            background: rgba(238,238,238,.95);
+            border-radius: 999px;
+            padding: 20px;
+            border: 1px solid var(--website-card-border);
+        }
+
+        .chart-wrapper-box h3, .full-width-chart-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 1rem;
+            color: var(--bushra-navy);
+            border-right: 4px solid var(--bushra-gold);
+            padding-right: 10px;
+        }
+
+        .canvas-container { position: relative; height: 240px; width: 100%; }
+        .canvas-container-large { position: relative; height: 350px; width: 100%; }
+
+        .data-table-container {
+            background: rgba(238,238,238,.95);
+            border-radius: 999px;
+            padding: 25px;
+            border: 1px solid var(--website-card-border);
+            overflow-x: auto;
+            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+        }
+
+        table { width: 100%; border-collapse: collapse; min-width: 1100px; }
+        th { background-color: var(--bushra-navy); color: white; font-weight: 700; padding: 12px 8px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,.14); }
+        td { padding: 10px 6px; font-size: 0.85rem; border-bottom: 1px solid #d7d7d7; text-align: center; }
+        tr:nth-child(even) { background-color: #f7f7f7; }
+
+        .input-cell {
+            width: 70px;
+            padding: 6px 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-align: center;
+            font-family: var(--font-primary);
+            font-weight: bold;
+            color: var(--ink);
+            background-color: #f7f7f7;
+            transition: all 0.2s ease;
+        }
+
+        .input-cell:focus {
+            outline: none;
+            border-color: var(--bushra-navy);
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(17, 67, 124, 0.15);
+        }
+
+        .badge-status { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; width: 110px; }
+        .badge-ok { background-color: #e8f7ef; color: #00836B; border: 1px solid #a9dec2; }
+        .badge-low { background-color: #faeaea; color: #a02020; border: 1px solid #f0b8b8; }
+
+        input[type="file"] { display: none; }
+
+        /* Bushra count.html visual identity refinements */
+        .bushra-brand { gap: 18px; min-width: 0; }
+        .bushra-brand img { max-width: 214px; max-height: 64px; object-fit: contain; display: block; }
+        .brand-text h1 { font-size: 24px; font-weight: 900; letter-spacing: -.4px; }
+        .brand-text p { font-size: 13px; color: #596778; font-family: var(--font-primary); font-weight: 700; letter-spacing: 0; }
+        .navbar-controls { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+        .btn-bushra { border-radius: 999px; font-weight: 900; min-height: 40px; padding: 10px 14px; box-shadow: 0 8px 18px rgba(36,63,102,.10); }
+        .container { max-width: 1440px; }
+        #fileStatus, .stat-card, .chart-wrapper-box, .full-width-chart-box, .data-table-container {
+            position: relative;
+            background: rgba(238,238,238,.95);
+            border: 1px solid var(--website-card-border);
+            border-radius: 8px;
+            box-shadow: 0 18px 46px rgba(36,63,102,.08);
+            overflow: hidden;
+        }
+        .stat-card::before, .chart-wrapper-box::before, .full-width-chart-box::before, .data-table-container::before {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--bushra-navy), var(--bushra-gold));
+            opacity: .92;
+        }
+        .stat-card > *, .chart-wrapper-box > *, .full-width-chart-box > *, .data-table-container > * { position: relative; z-index: 1; }
+        .welcome-card { border-radius: 12px; border-bottom: 4px solid var(--bushra-gold); box-shadow: 0 18px 46px rgba(36,63,102,.12); }
+        .live-datetime-box { border-radius: 10px; }
+        th { background: var(--bushra-navy); font-weight: 900; }
+        td { font-weight: 700; }
+        .view-cell {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 70px;
+            min-height: 34px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #f7f7f7;
+            border: 1px solid #d7d7d7;
+            color: var(--bushra-navy);
+            font-weight: 900;
+        }
+        .badge-status { border-radius: 999px; }
+        @media(max-width: 900px) {
+            .main-navbar { align-items: flex-start; flex-direction: column; min-height: auto; padding: 12px 16px; gap: 10px; }
+            .navbar-controls { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+            .btn-bushra { font-size: 11px; min-height: 36px; padding: 8px 11px; white-space: nowrap; }
+            .bushra-brand img { max-width: 160px; max-height: 48px; }
+            .brand-text h1 { font-size: 19px; white-space: normal; }
+            .brand-text p { font-size: 12px; }
+            .stats-cards-container, .visual-charts-grid { grid-template-columns: 1fr; }
+            .full-width-chart-box { grid-column: span 1; }
+            .welcome-card { flex-direction: column; align-items: flex-start; gap: 14px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-navbar">
+        <div class="bushra-brand">
+            <img src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" style="height: 64px; width: auto; object-fit: contain;">
+            <div class="brand-text">
+                
+            </div>
+        </div>
+        
+        <div class="navbar-controls">
+            <button id="btnSaveLocal" class="btn-bushra btn-save-local" onclick="saveDataToLocalStorage()">
+                <i class="fa-solid fa-floppy-disk"></i> <span>حفظ التعديلات المحلية الحالية</span>
+            </button>
+            <button class="btn-bushra btn-refresh" onclick="fetchGoogleSheetData(true)">
+                <i class="fa-solid fa-rotate"></i> تحديث من قوقل شيت السحابي
+            </button>
+            <label class="btn-bushra btn-upload">
+                <i class="fa-solid fa-file-excel"></i> رفع ملف Excel يدوي
+                <input type="file" id="excelUploadInput" accept=".xlsx, .xls">
+            </label>
+            <button class="btn-bushra btn-pdf" onclick="exportToPDF()">
+                <i class="fa-solid fa-file-pdf"></i> تصدير تقرير PDF رسمي
+            </button>
+        </div>
+    </div>
+
+    <div id="capture-area" class="container">
+        
+        <div id="pdfHeader" class="pdf-report-header">
+            <div class="bushra-brand">
+                <div id="pdfLogoIcon" class="pdf-logo-placeholder"><i class="fa-solid fa-hotel"></i></div>
+                <img id="pdfLogoImg" src="https://www.bushra.com.sa/web/image/website/1/logo/BUSHRA%20Hospitalty?unique=182e5da" alt="Bushra Hospitality Logo" style="height: 64px; width: auto; object-fit: contain;">
+                <div class="brand-text">
+                    <h1 style="font-size: 1.6rem; color: var(--bushra-navy); margin:0;">بشرى الضيافة</h1>
+                    <p style="font-size: 0.8rem; color: var(--bushra-navy); margin:2px 0 0 0; font-family:'Arial'; font-weight:bold;">BUSHRA HOSPITALITY</p>
+                </div>
+            </div>
+            <div style="text-align: left; color: var(--bushra-navy); font-weight: bold; font-size: 1.1rem;">
+                <div>التقرير الرسمي لمراكز الإركاب</div>
+                <div style="font-size: 0.9rem; color: var(--bushra-gold); margin-top: 4px;">موسم ١٤٤٧ هـ</div>
+            </div>
+        </div>
+        
+        <div id="fileStatus">🔄 جاري محاولة الاتصال التلقائي برابط قوقل شيت المباشر وجلب البيانات التشغيلية الميدانية...</div>
+
+        <div class="welcome-card">
+            <div>
+                <h2 style="margin: 0; font-size: 1.7rem;">لوحة الرصد والجاهزية لمراكز الإركاب</h2>
+                <p style="margin: 8px 0 0 0; opacity: 0.9;">غرفة العمليات الرقمية لمتابعة حزم الحجاج التفاعلية المستهدفة (45 حاجاً لكل حزمة)</p>
+            </div>
+            
+            <div class="live-datetime-box">
+                <div><i class="fa-regular fa-calendar-days"></i> <span id="hijriDateStr">.. جاري جلب التاريخ ..</span></div>
+                <div style="margin-top: 4px;"><i class="fa-regular fa-clock"></i> <span id="liveTimeStr">.. جاري حساب الوقت ..</span></div>
+            </div>
+        </div>
+
+        <div class="stats-cards-container">
+            <div class="stat-card top-performers">
+                <h4><i class="fa-solid fa-arrow-trend-up" style="color: var(--success-color);"></i> أعلى 3 مراكز إنجازاً</h4>
+                <div id="topCentersList" class="card-value">جاري التحاسب المباشر...</div>
+            </div>
+            <div class="stat-card low-performers">
+                <h4><i class="fa-solid fa-arrow-trend-down" style="color: var(--danger-color);"></i> أقل 3 مراكز إنجازاً</h4>
+                <div id="lowCentersList" class="card-value">جاري التحاسب المباشر...</div>
+            </div>
+            <div class="stat-card highest-pct">
+                <h4><i class="fa-solid fa-chart-line" style="color: var(--bushra-navy);"></i> أعلى نسبة إنجاز كلية</h4>
+                <div id="highestPctValue" class="card-value" style="color: var(--success-color); font-size: 1.5rem;">0%</div>
+                <div id="highestPctCenter" style="font-size: 0.8rem; color: var(--muted);">-</div>
+            </div>
+            <div class="stat-card lowest-pct">
+                <h4><i class="fa-solid fa-triangle-exclamation" style="color: var(--bushra-gold);"></i> أقل نسبة إنجاز كلية</h4>
+                <div id="lowestPctValue" class="card-value" style="color: var(--danger-color); font-size: 1.5rem;">0%</div>
+                <div id="lowestPctCenter" style="font-size: 0.8rem; color: var(--muted);">-</div>
+            </div>
+        </div>
+
+        <div class="full-width-chart-box">
+            <h3>الرصد المقارن لمراكز الإركاب (مستهدف جاهزية السكن ضد المنجز الفعلي)</h3>
+            <div class="canvas-container-large">
+                <canvas id="horizontalCentersGraph"></canvas>
+            </div>
+        </div>
+
+        <div class="visual-charts-grid">
+            <div class="chart-wrapper-box">
+                <h3>إجمالي جاهزية السكن</h3>
+                <div class="canvas-container">
+                    <canvas id="housingUIGraph"></canvas>
+                </div>
+            </div>
+            <div class="chart-wrapper-box">
+                <h3>تسكين وتعيين المرشدين</h3>
+                <div class="canvas-container">
+                    <canvas id="guidesUIGraph"></canvas>
+                </div>
+            </div>
+            <div class="chart-wrapper-box">
+                <h3>موقف بيانات الإركاب</h3>
+                <div class="canvas-container">
+                    <canvas id="erkabUIGraph"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-table-container">
+            <table id="mainPilgrimsTable">
+                <thead>
+                    <tr>
+                        <th rowspan="2">المركز التشغيلي</th>
+                        <th rowspan="2">عدد الحجاج</th>
+                        <th colspan="3">جاهزية السكن (45)</th>
+                        <th colspan="3">المرشدين المعينين (45)</th>
+                        <th colspan="3">بيانات الإركاب (45)</th>
+                    </tr>
+                    <tr>
+                        <th>مستهدف</th><th>المنجز</th><th>الحالة</th>
+                        <th>مستهدف</th><th>المنجز</th><th>الحالة</th>
+                        <th>مطلوب</th><th>المنجز</th><th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody id="tableDataBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const targetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRhxg_lMxfVs6YHSPpSFVHiPoTncc5KDHH5Iz3H1P6Njy5yvtx1otepVZ4maGLruOPoYq_SEBhhXe6Q/pub?gid=662596311&single=true&output=csv";
+        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetCsvUrl);
+
+        // البيانات الاحتياطية
+        let globalCentersDataset = [
+            { id: 1, name: "مركز 1", totalPilgrims: 2250, housingFinished: 48, guidesFinished: 42, erkabFinished: 45 },
+            { id: 2, name: "مركز 2", totalPilgrims: 1800, housingFinished: 38, guidesFinished: 35, erkabFinished: 36 }
+        ];
+
+        let internalChartsCache = [];
+        let hasUnsavedChanges = false;
+
+        function updateLiveDateTime() {
+            const now = new Date();
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptionsGregorian = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateOptionsHijri = { year: 'numeric', month: 'long', day: 'numeric' };
+
+            const timeStr = now.toLocaleTimeString('ar-SA', timeOptions);
+            const gregDateStr = now.toLocaleDateString('ar-SA', dateOptionsGregorian);
+            const hijriStr = now.toLocaleDateString('ar-TN-u-ca-islamic-umalqura', dateOptionsHijri);
+
+            document.getElementById('liveTimeStr').innerText = timeStr;
+            document.getElementById('hijriDateStr').innerText = `${gregDateStr} | ${hijriStr}`;
+        }
+        setInterval(updateLiveDateTime, 1000);
+
+        function parseCSV(text) {
+            let lines = text.split(/\r?\n/).filter(line => line.trim() !== "");
+            return lines.map(line => {
+                let result = []; let current = ""; let inQuotes = false;
+                for(let i=0; i<line.length; i++) {
+                    let char = line[i];
+                    if(char === '"') { inQuotes = !inQuotes; }
+                    else if(char === ',' && !inQuotes) { result.push(current.trim()); current = ""; }
+                    else { current += char; }
+                }
+                result.push(current.trim());
+                return result;
+            });
+        }
+
+        // دالة جلب البيانات مع فحص وجود حفظ محلي سابق تفادياً للمسح المفاجئ للأعمال
+        async function fetchGoogleSheetData(forceReset = false) {
+            if(!forceReset) {
+                const localData = localStorage.getItem("bushra_v7_dataset");
+                if(localData) {
+                    try {
+                        globalCentersDataset = JSON.parse(localData);
+                        renderDashboard(true);
+                        document.getElementById('fileStatus').innerHTML = `💾 تم استعادة آخر تعديلات محفوظة محلياً في المتصفح بنجاح! إذا أردت جلب بيانات السحابة الأصلية مجدداً، اضغط زر تحديث.`;
+                        document.getElementById('fileStatus').style.backgroundColor = "#fef3c7";
+                        document.getElementById('fileStatus').style.color = "#92400e";
+                        return;
+                    } catch(e) { console.error("Error loading local storage", e); }
+                }
+            }
+
+            document.getElementById('fileStatus').innerHTML = "🔄 جاري الاتصال المباشر بقوقل شيت وتحديث لوحة الرصد الرقمية...";
+            try {
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error("فشلت عملية المزامنة السحابية.");
+                const dataText = await response.text();
+                const parsedRows = parseCSV(dataText);
+                
+                if(parsedRows.length > 1) {
+                    const headers = parsedRows[0].map(h => h ? h.toString().trim() : "");
+                    const getIndex = (namesArray) => headers.findIndex(h => namesArray.some(name => h.includes(name)));
+                    
+                    const idxCenter = getIndex(["المركز", "اسم المركز", "مركز"]);
+                    const idxHaj = getIndex(["عدد الحجاج", "الحجاج", "حجاج"]);
+                    const idxHousing = getIndex(["كشوفات جاهزية السكن الفعلي", "سكن_المنجز", "السكن المنجز"]);
+                    const idxGuides = getIndex(["المرشدين لكل مركز الفعلي", "مرشدين_المنجز", "المرشدين المنجز"]);
+                    const idxErkab = getIndex(["بيان الاركاب الفعلي", "إركاب_المنجز", "الإركاب المنجز"]);
+
+                    let tempDataset = [];
+                    for(let i = 1; i < parsedRows.length; i++) {
+                        const row = parsedRows[i];
+                        if(!row || row.length === 0 || !row[idxCenter] || row[idxCenter] === "") continue;
+
+                        const parseNum = (val) => {
+                            if(!val || val === "") return 0;
+                            return parseInt(val.toString().replace(/[\,]/g, '')) || 0;
+                        };
+
+                        tempDataset.push({
+                            id: i,
+                            name: "مركز " + row[idxCenter],
+                            totalPilgrims: parseNum(row[idxHaj]),
+                            housingFinished: parseNum(row[idxHousing]),
+                            guidesFinished: parseNum(row[idxGuides]),
+                            erkabFinished: parseNum(row[idxErkab])
+                        });
+                    }
+
+                    if(tempDataset.length > 0) {
+                        globalCentersDataset = tempDataset;
+                        hasUnsavedChanges = false;
+                        document.getElementById('btnSaveLocal').style.display = 'none';
+                        renderDashboard(true);
+                        document.getElementById('fileStatus').innerHTML = `🟢 تم التحديث والمزامنة بنجاح من قوقل شيت المباشر! تم رصد (${globalCentersDataset.length}) مركز تشغيلي ميداني حالياً.`;
+                        document.getElementById('fileStatus').style.backgroundColor = "#e8f7ef";
+                        document.getElementById('fileStatus').style.color = "#00836B";
+                        return;
+                    }
+                }
+                throw new Error("تنسيق ملف البيانات غير متوافق.");
+            } catch (error) {
+                console.warn("Google sheet fetch failed, using fallback:", error);
+                document.getElementById('fileStatus').innerHTML = `💡 وضع العمل الاحتياطي نشط. قيم المنجز تظهر للعرض فقط، ويمكن تحديثها عبر قوقل شيت أو رفع ملف Excel.`;
+                document.getElementById('fileStatus').style.backgroundColor = "#faeaea";
+                document.getElementById('fileStatus').style.color = "#a02020";
+                renderDashboard(true);
+            }
+        }
+
+        // الحفظ المحلي المتطور لحماية بيانات المستخدم من الضياع في الميدان
+        function saveDataToLocalStorage() {
+            localStorage.setItem("bushra_v7_dataset", JSON.stringify(globalCentersDataset));
+            hasUnsavedChanges = false;
+            document.getElementById('btnSaveLocal').style.display = 'none';
+            document.getElementById('fileStatus').innerHTML = `✅ تم حفظ تعديلات البيانات بنجاح في ذاكرة المتصفح المحلية! ستبقى محفوظة حتى لو أغلقتِ الصفحة.`;
+            document.getElementById('fileStatus').style.backgroundColor = "#e8f7ef";
+            document.getElementById('fileStatus').style.color = "#00836B";
+        }
+
+        document.getElementById('excelUploadInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const bstr = evt.target.result;
+                const wb = XLSX.read(bstr, { type: 'binary' });
+                const data = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+                if(data.length > 0) {
+                    globalCentersDataset = data.map((r, i) => ({
+                        id: i + 1,
+                        name: r["المركز"] || r["اسم المركز"] || "مركز " + (i+1),
+                        totalPilgrims: parseInt(r["الحجاج"]) || parseInt(r["عدد الحجاج"]) || 0,
+                        housingFinished: parseInt(r["سكن_المنجز"]) || parseInt(r["كشوفات جاهزية السكن الفعلي"]) || 0,
+                        guidesFinished: parseInt(r["مرشدين_المنجز"]) || parseInt(r["المرشدين لكل مركز الفعلي"]) || 0,
+                        erkabFinished: parseInt(r["إركاب_المنجز"]) || parseInt(r["بيان الاركاب الفعلي"]) || 0
+                    }));
+                    hasUnsavedChanges = true;
+                    document.getElementById('btnSaveLocal').style.display = 'inline-flex';
+                    renderDashboard(true);
+                    document.getElementById('fileStatus').innerHTML = ` تم تحميل البيانات من ملف الإكسل اليدوي: <strong>${file.name}</strong> (اضغطي حفظ لتثبيتها محلياً) ⚠️`;
+                    document.getElementById('fileStatus').style.backgroundColor = "#fef3c7";
+                    document.getElementById('fileStatus').style.color = "#92400e";
+                }
+            };
+            reader.readAsBinaryString(file);
+        });
+
+        function updateValue(index, field, value) {
+            const numVal = parseInt(value) || 0;
+            globalCentersDataset[index][field] = numVal;
+            
+            // تفعيل زر الحفظ فور حدوث أي تعديل في الحقول الإدخالية
+            if(!hasUnsavedChanges) {
+                hasUnsavedChanges = true;
+                document.getElementById('btnSaveLocal').style.display = 'inline-flex';
+            }
+            renderDashboard(false); 
+        }
+
+        function calculateAdvancedStats() {
+            let centersCalculated = globalCentersDataset.map(c => {
+                const target = Math.ceil(c.totalPilgrims / 45);
+                const hPct = target > 0 ? (c.housingFinished / target) : 0;
+                const gPct = target > 0 ? (c.guidesFinished / target) : 0;
+                const ePct = target > 0 ? (c.erkabFinished / target) : 0;
+                
+                const averagePct = Math.min(Math.round(((hPct + gPct + ePct) / 3) * 100), 100);
+                return { name: c.name, score: averagePct };
+            });
+
+            let sortedTop = [...centersCalculated].sort((a, b) => b.score - a.score);
+            let sortedLow = [...centersCalculated].sort((a, b) => a.score - b.score);
+
+            const topHTML = sortedTop.slice(0, 3).map((c, i) => `
+                <div class="list-item">
+                    <span>${i+1}. ${c.name}</span>
+                    <strong style="color: var(--success-color);">${c.score}%</strong>
+                </div>
+            `).join('');
+            document.getElementById('topCentersList').innerHTML = topHTML || 'لا توجد بيانات';
+
+            const lowHTML = sortedLow.slice(0, 3).map((c, i) => `
+                <div class="list-item">
+                    <span>${i+1}. ${c.name}</span>
+                    <strong style="color: var(--danger-color);">${c.score}%</strong>
+                </div>
+            `).join('');
+            document.getElementById('lowCentersList').innerHTML = lowHTML || 'لا توجد بيانات';
+
+            if(sortedTop.length > 0) {
+                document.getElementById('highestPctValue').innerText = sortedTop[0].score + '%';
+                document.getElementById('highestPctCenter').innerText = sortedTop[0].name;
+                
+                document.getElementById('lowestPctValue').innerText = sortedLow[0].score + '%';
+                document.getElementById('lowestPctCenter').innerText = sortedLow[0].name;
+            }
+        }
+
+        function renderDashboard(rebuildTable = true) {
+            let sumH = 0, sumHD = 0, sumG = 0, sumGD = 0, sumE = 0, sumED = 0;
+            let names = [], targets = [], housingDones = [];
+
+            const tbody = document.getElementById('tableDataBody');
+            if (rebuildTable) {
+                tbody.innerHTML = "";
+            }
+
+            globalCentersDataset.forEach((c, idx) => {
+                const target = Math.ceil(c.totalPilgrims / 45);
+                names.push(c.name);
+                targets.push(target);
+                housingDones.push(c.housingFinished);
+
+                sumH += target; sumHD += c.housingFinished;
+                sumG += target; sumGD += c.guidesFinished;
+                sumE += target; sumED += c.erkabFinished;
+
+                const calcPct = (d, t) => t > 0 ? Math.min(Math.round((d/t)*100), 100) : 0;
+
+                if (rebuildTable) {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td style="text-align:right; font-weight:bold; color:var(--bushra-navy);">${c.name}</td>
+                            <td style="font-weight: 500;">${c.totalPilgrims.toLocaleString()}</td>
+                            
+                            <td>${target}</td>
+                            <td><span class="view-cell" aria-label="المنجز للسكن">${c.housingFinished.toLocaleString()}</span></td>
+                            <td id="status-housing-${idx}">${calcPct(c.housingFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.housingFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
+                            
+                            <td>${target}</td>
+                            <td><span class="view-cell" aria-label="المنجز للمرشدين">${c.guidesFinished.toLocaleString()}</span></td>
+                            <td id="status-guides-${idx}">${calcPct(c.guidesFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.guidesFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
+                            
+                            <td>${target}</td>
+                            <td><span class="view-cell" aria-label="المنجز للإركاب">${c.erkabFinished.toLocaleString()}</span></td>
+                            <td id="status-erkab-${idx}">${calcPct(c.erkabFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.erkabFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`}</td>
+                        </tr>
+                    `;
+                } else {
+                    document.getElementById(`status-housing-${idx}`).innerHTML = calcPct(c.housingFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.housingFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`;
+                    document.getElementById(`status-guides-${idx}`).innerHTML = calcPct(c.guidesFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.guidesFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`;
+                    document.getElementById(`status-erkab-${idx}`).innerHTML = calcPct(c.erkabFinished, target) < 100 ? `<span class="badge-status badge-low">متأخر (${calcPct(c.erkabFinished, target)}%)</span>` : `<span class="badge-status badge-ok">مكتمل (100%)</span>`;
+                }
+            });
+
+            calculateAdvancedStats();
+
+            internalChartsCache.forEach(chart => chart.destroy());
+            internalChartsCache = [];
+
+            const createChart = (id, type, labels, data, isHorizontal = false) => {
+                const ctx = document.getElementById(id).getContext('2d');
+                const chart = new Chart(ctx, {
+                    type: type,
+                    data: { labels: labels, datasets: data },
+                    options: { 
+                        indexAxis: isHorizontal ? 'y' : 'x', 
+                        responsive: true, 
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { font: { family: 'Tajawal' } } }
+                        }
+                    }
+                });
+                internalChartsCache.push(chart);
+            };
+
+            createChart('horizontalCentersGraph', 'bar', names, [
+                { label: 'المستهدف المطلوب', data: targets, backgroundColor: '#11437c' },
+                { label: 'منجز السكن الفعلي', data: housingDones, backgroundColor: '#bc9c63' }
+            ], true);
+
+            createChart('housingUIGraph', 'doughnut', ['منجز', 'متبقي'], [{ data: [sumHD, Math.max(0, sumH-sumHD)], backgroundColor: ['#11437c', '#d7d7d7'] }]);
+            createChart('guidesUIGraph', 'line', ['المستهدف', 'المعينين'], [{ data: [sumG, sumGD], fill: true, borderColor: '#bc9c63', backgroundColor: 'rgba(188, 156, 99, 0.15)' }]);
+            createChart('erkabUIGraph', 'bar', ['المستهدف الكلي', 'المنجز الفعلي'], [{ data: [sumE, sumED], backgroundColor: ['#10b981', '#bc9c63'] }]);
+        }
+
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const captureArea = document.getElementById('capture-area');
+            const pdfHeader = document.getElementById('pdfHeader');
+            const pdfLogoImg = document.getElementById('pdfLogoImg');
+            const pdfLogoIcon = document.getElementById('pdfLogoIcon');
+            
+            pdfLogoImg.style.display = 'none';
+            pdfLogoIcon.style.display = 'flex';
+            pdfHeader.style.display = 'flex';
+            document.querySelector('.main-navbar').style.display = 'none';
+
+            setTimeout(() => {
+                html2canvas(captureArea, { 
+                    scale: 2.5, 
+                    useCORS: true, 
+                    logging: false,
+                    allowTaint: true,
+                    windowWidth: 1400
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    
+                    const imgWidth = pdfWidth;
+                    const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+                    
+                    let heightLeft = imgHeight;
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pdfHeight;
+
+                    while (heightLeft >= 0) {
+                        position = heightLeft - imgHeight;
+                        pdf.addPage();
+                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        heightLeft -= pdfHeight;
+                    }
+                    
+                    pdf.save(`تقرير_بشرى_الضيافة_الرسمي_${new Date().toISOString().slice(0,10)}.pdf`);
+                    
+                    pdfLogoImg.style.display = 'block';
+                    pdfLogoIcon.style.display = 'none';
+                    pdfHeader.style.display = 'none';
+                    document.querySelector('.main-navbar').style.display = 'flex';
+                }).catch(err => {
+                    console.error("خطأ التصدير:", err);
+                    pdfLogoImg.style.display = 'block';
+                    pdfLogoIcon.style.display = 'none';
+                    pdfHeader.style.display = 'none';
+                    document.querySelector('.main-navbar').style.display = 'flex';
+                });
+            }, 600);
+        }
+
+        window.onload = function() {
+            updateLiveDateTime(); 
+            fetchGoogleSheetData(false);
+        };
+    </script>
+</body>
+</html>
